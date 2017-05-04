@@ -13,7 +13,6 @@ namespace Droplist.api.Models
 		public string LastName { get; set; }
 		public string EmailAddress { get; set; }
 		public string Cellphone { get; set; }
-		public string Address { get; set; }
 		public int EmployeeNumber { get; set; }
 		public string Role { get; set; }
 		

@@ -135,12 +135,25 @@
     <Compile Include="Controllers\DroplistsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="data\DroplistDataContext.cs" />
-    <Compile Include="Migrations\201705031732262_InitialMigration.cs" />
-    <Compile Include="Migrations\201705031732262_InitialMigration.Designer.cs">
-      <DependentUpon>201705031732262_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201705041704100_NewInitialMigration.cs" />
+    <Compile Include="Migrations\201705041704100_NewInitialMigration.Designer.cs">
+      <DependentUpon>201705041704100_NewInitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705041851105_UpdatedDroplistItems.cs" />
+    <Compile Include="Migrations\201705041851105_UpdatedDroplistItems.Designer.cs">
+      <DependentUpon>201705041851105_UpdatedDroplistItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.cs" />
+    <Compile Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.Designer.cs">
+      <DependentUpon>201705041855161_UpdatedDroplistItemAisleNUmber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705042102290_AddedRoleController.cs" />
+    <Compile Include="Migrations\201705042102290_AddedRoleController.Designer.cs">
+      <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
@@ -170,8 +183,17 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705031732262_InitialMigration.resx">
-      <DependentUpon>201705031732262_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705041704100_NewInitialMigration.resx">
+      <DependentUpon>201705041704100_NewInitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041851105_UpdatedDroplistItems.resx">
+      <DependentUpon>201705041851105_UpdatedDroplistItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.resx">
+      <DependentUpon>201705041855161_UpdatedDroplistItemAisleNUmber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705042102290_AddedRoleController.resx">
+      <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

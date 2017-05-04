@@ -51,11 +51,17 @@ namespace Droplist.api.Controllers
                     itemNumber = d.Product.ItemNumber,
                     description = d.Product.Description,
                     aisleNumber = d.AisleNumber,
-                    ailseRow = d.AisleRow,
+                    aisleRow = d.AisleRow,
                     aisleColumn = d.AisleColumn,
                     completed = d.Completed,
-                    rejected = d.Rejected
-                });
+                    rejected = d.Rejected,
+					quantity = d.Quantity
+                })
+				.OrderBy(d => d.aisleNumber)
+				.ThenBy(d => d.aisleColumn)
+				.ThenBy(d => d.aisleRow)
+				.ThenBy(d => d.itemNumber);
+
 
 			var resultSet = new
 			{

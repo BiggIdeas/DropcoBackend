@@ -10,7 +10,7 @@ namespace Droplist.api.Models
 		public int DroplistId { get; set; }
 		public int BuildingId { get; set; }
 		public int StockerId { get; set; }
-		public int DriverId { get; set; }
+		public int? DriverId { get; set; }
 		public int SectionId { get; set; }
 		public string DroplistName { get; set; }
 		public DateTime? CreatedOnDate { get; set; }

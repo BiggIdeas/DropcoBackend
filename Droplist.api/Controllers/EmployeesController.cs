@@ -25,7 +25,6 @@ namespace Droplist.api.Controllers
                 employee.LastName,
                 employee.EmailAddress,
                 employee.Cellphone,
-                employee.Address,
                 employee.EmployeeNumber,
                 employee.Role,
 
@@ -52,7 +51,6 @@ namespace Droplist.api.Controllers
                 employee.LastName,
                 employee.EmailAddress,
                 employee.Cellphone,
-                employee.Address,
                 employee.EmployeeNumber,
                 employee.Role
 
@@ -81,7 +79,6 @@ namespace Droplist.api.Controllers
             dbEmployee.LastName = employee.LastName;
             dbEmployee.EmailAddress = employee.EmailAddress;
             dbEmployee.Cellphone = employee.Cellphone;
-            dbEmployee.Address = employee.Address;
             dbEmployee.EmployeeNumber = employee.EmployeeNumber;
             dbEmployee.Role = employee.Role;
 
@@ -127,7 +124,6 @@ namespace Droplist.api.Controllers
                 employee.LastName,
                 employee.EmailAddress,
                 employee.Cellphone,
-                employee.Address,
                 employee.EmployeeNumber,
                 employee.Role
 

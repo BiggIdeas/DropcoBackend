@@ -26,7 +26,8 @@ namespace Droplist.api.Controllers
 				droplistItem.AisleRow,
 				droplistItem.AisleColumn,
 				droplistItem.Completed,
-				droplistItem.Rejected
+				droplistItem.Rejected,
+				droplistItem.Quantity
 
 			});
 
@@ -52,7 +53,9 @@ namespace Droplist.api.Controllers
 				droplistItem.AisleRow,
 				droplistItem.AisleColumn,
 				droplistItem.Completed,
-				droplistItem.Rejected
+				droplistItem.Rejected,
+				droplistItem.Quantity
+
 
 			};
 
@@ -81,6 +84,8 @@ namespace Droplist.api.Controllers
 			dbDroplistItem.AisleColumn = droplistItem.AisleColumn;
 			dbDroplistItem.Completed = droplistItem.Completed;
 			dbDroplistItem.Rejected = droplistItem.Rejected;
+			dbDroplistItem.Quantity = droplistItem.Quantity;
+
 
 			db.Entry(dbDroplistItem).State = EntityState.Modified;
 
@@ -125,7 +130,8 @@ namespace Droplist.api.Controllers
 				droplistItem.AisleRow,
 				droplistItem.AisleColumn,
 				droplistItem.Completed,
-				droplistItem.Rejected
+				droplistItem.Rejected,
+				droplistItem.Quantity
 
 			});
         }
