@@ -122,7 +122,21 @@ namespace Droplist.api.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+			foreach (var droplistItem in droplist.DroplistItems)
+			{
+				if (droplistItem.DroplistItemId == 0)
+				{
+					db.DroplistItems.Add(droplistItem);
+				}
+				else
+				{
+					db.Entry(droplistItem).State = EntityState.Modified;
+				}
+
+				db.SaveChanges();
+			}
+
+			return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Droplists
@@ -134,7 +148,36 @@ namespace Droplist.api.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Droplists.Add(droplist);
+			var dbDroplist = new Models.Droplist
+			{
+				BuildingId = droplist.BuildingId,
+				CreatedOnDate = droplist.CreatedOnDate,
+				DriverId = droplist.DriverId,
+				DroplistId = droplist.DroplistId,
+				DroplistName = droplist.DroplistName,
+				SectionId = droplist.SectionId,
+				StockerId = droplist.StockerId
+			};
+
+			foreach (var di in droplist.DroplistItems)
+			{
+				var dbdi = new Models.DroplistItem
+				{
+					AisleColumn = di.AisleColumn,
+					AisleNumber = di.AisleNumber,
+					AisleRow = di.AisleRow,
+					Completed = di.Completed,
+					DroplistId = di.DroplistId,
+					DroplistItemId = di.DroplistItemId,
+					ProductId = di.ProductId,
+					Quantity = di.Quantity,
+					Rejected = di.Rejected
+				};
+
+				dbDroplist.DroplistItems.Add(dbdi);
+			}
+
+            db.Droplists.Add(dbDroplist);
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = droplist.DroplistId }, new

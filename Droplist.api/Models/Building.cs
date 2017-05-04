@@ -1,9 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Droplist.api.Models
 {
 	public class Building
 	{
+		public Building()
+		{
+			Droplists = new Collection<Droplist>();
+			Employees = new Collection<Employee>();
+		}
 		// Scalar Properties
 		public int BuildingId { get; set; }
 		public int BuildingNumber { get; set; }

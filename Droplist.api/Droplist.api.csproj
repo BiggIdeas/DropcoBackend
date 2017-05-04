@@ -155,6 +155,10 @@
     <Compile Include="Migrations\201705042102290_AddedRoleController.Designer.cs">
       <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.cs" />
+    <Compile Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.Designer.cs">
+      <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Department.cs" />
@@ -194,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705042102290_AddedRoleController.resx">
       <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.resx">
+      <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

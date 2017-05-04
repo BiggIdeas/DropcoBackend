@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Droplist.api.Models
 {
 	public class Droplist
 	{
+		public Droplist()
+		{
+			DroplistItems = new Collection<DroplistItem>();
+		}
+
 		// scalar properties
 		public int DroplistId { get; set; }
 		public int BuildingId { get; set; }

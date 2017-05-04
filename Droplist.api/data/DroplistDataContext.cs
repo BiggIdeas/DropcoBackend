@@ -41,7 +41,7 @@ namespace Droplist.api.data
 
 			modelBuilder.Entity<Employee>()
 				.HasMany(Employee => Employee.Droplists)
-				.WithRequired(droplist => droplist.Driver)
+				.WithOptional(droplist => droplist.Driver)
 				.HasForeignKey(droplist => droplist.DriverId);
 
 			modelBuilder.Entity<Section>()
