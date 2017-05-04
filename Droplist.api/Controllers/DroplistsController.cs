@@ -1,15 +1,15 @@
-﻿using System.Data;
+﻿using Droplist.api.data;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Droplist.api.data;
 
 namespace Droplist.api.Controllers
 {
-	public class DroplistsController : ApiController
+    public class DroplistsController : ApiController
     {
         private DroplistDataContext db = new DroplistDataContext();
 

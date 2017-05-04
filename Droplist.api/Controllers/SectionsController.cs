@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Droplist.api.data;
+using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Droplist.api.Models;
-using Droplist.api.data;
 
 namespace Droplist.api.Controllers
 {

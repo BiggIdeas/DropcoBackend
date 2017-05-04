@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Droplist.api.data;
+using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Droplist.api.Models;
-using Droplist.api.data;
 
 namespace Droplist.api.Controllers
 {
@@ -17,26 +14,25 @@ namespace Droplist.api.Controllers
     {
         private DroplistDataContext db = new DroplistDataContext();
 
-		// GET: api/Employees
-		public IHttpActionResult GetEmployees()
-		{
-			var resultSet = db.Employees.Select(employee => new
+        // GET: api/Employees
+        public IHttpActionResult GetEmployees()
+        {
+            var resultSet = db.Employees.Select(employee => new
+            {
+                employee.EmployeeId,
+                employee.BuildingId,
+                employee.FirstName,
+                employee.LastName,
+                employee.EmailAddress,
+                employee.Cellphone,
+                employee.Address,
+                employee.EmployeeNumber,
+                employee.Role,
 
-			{
-				employee.EmployeeId,
-				employee.BuildingId,
-				employee.FirstName,
-				employee.LastName,
-				employee.EmailAddress,
-				employee.Cellphone,
-				employee.Address,
-				employee.EmployeeNumber,
-				employee.Role,
+            });
 
-			});
-
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // GET: api/Employees/5
         [ResponseType(typeof(Employee))]
@@ -47,22 +43,22 @@ namespace Droplist.api.Controllers
             {
                 return NotFound();
             }
-			var resultSet =  new
+            var resultSet = new
 
-			{
-				employee.EmployeeId,
-				employee.BuildingId,
-				employee.FirstName,
-				employee.LastName,
-				employee.EmailAddress,
-				employee.Cellphone,
-				employee.Address,
-				employee.EmployeeNumber,
-				employee.Role
+            {
+                employee.EmployeeId,
+                employee.BuildingId,
+                employee.FirstName,
+                employee.LastName,
+                employee.EmailAddress,
+                employee.Cellphone,
+                employee.Address,
+                employee.EmployeeNumber,
+                employee.Role
 
-			};
-			return Ok(resultSet);
-		}
+            };
+            return Ok(resultSet);
+        }
 
         // PUT: api/Employees/5
         [ResponseType(typeof(void))]
@@ -77,19 +73,19 @@ namespace Droplist.api.Controllers
             {
                 return BadRequest();
             }
-			var dbEmployee = db.Employees.Find(id);
+            var dbEmployee = db.Employees.Find(id);
 
-			dbEmployee.EmployeeId = employee.EmployeeId;
-			dbEmployee.BuildingId = employee.BuildingId;
-			dbEmployee.FirstName = employee.FirstName;
-			dbEmployee.LastName = employee.LastName;
-			dbEmployee.EmailAddress = employee.EmailAddress;
-			dbEmployee.Cellphone = employee.Cellphone;
-			dbEmployee.Address = employee.Address;
-			dbEmployee.EmployeeNumber = employee.EmployeeNumber;
-			dbEmployee.Role = employee.Role;
+            dbEmployee.EmployeeId = employee.EmployeeId;
+            dbEmployee.BuildingId = employee.BuildingId;
+            dbEmployee.FirstName = employee.FirstName;
+            dbEmployee.LastName = employee.LastName;
+            dbEmployee.EmailAddress = employee.EmailAddress;
+            dbEmployee.Cellphone = employee.Cellphone;
+            dbEmployee.Address = employee.Address;
+            dbEmployee.EmployeeNumber = employee.EmployeeNumber;
+            dbEmployee.Role = employee.Role;
 
-			db.Entry(dbEmployee).State = EntityState.Modified;
+            db.Entry(dbEmployee).State = EntityState.Modified;
 
             try
             {
@@ -124,18 +120,18 @@ namespace Droplist.api.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeId }, new
 
-			{
-				employee.EmployeeId,
-				employee.BuildingId,
-				employee.FirstName,
-				employee.LastName,
-				employee.EmailAddress,
-				employee.Cellphone,
-				employee.Address,
-				employee.EmployeeNumber,
-				employee.Role
+            {
+                employee.EmployeeId,
+                employee.BuildingId,
+                employee.FirstName,
+                employee.LastName,
+                employee.EmailAddress,
+                employee.Cellphone,
+                employee.Address,
+                employee.EmployeeNumber,
+                employee.Role
 
-			});
+            });
         }
 
         // DELETE: api/Employees/5
