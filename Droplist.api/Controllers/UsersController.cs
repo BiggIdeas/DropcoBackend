@@ -18,9 +18,9 @@ namespace Droplist.api.Controllers
             _userManager = new UserManager<User>(store);
         }
 
-        // POST: api/users/register
+        // POST: api/register
         [AllowAnonymous]
-        [Route("api/users/register")]
+        [Route("api/register")]
         public IHttpActionResult Register(RegistrationModel registration)
         {
             if (!ModelState.IsValid)
@@ -30,8 +30,21 @@ namespace Droplist.api.Controllers
 
             var user = new User
             {
-                UserName = registration.EmployeeNumber
+                UserName = registration.EmployeeNumber.ToString()
             };
+
+            var employee = new Employee
+            {
+                BuildingId = registration.BuildingId,
+                FirstName = registration.FirstName,
+                LastName = registration.LastName,
+                EmployeeNumber = registration.EmployeeNumber,
+                Role = registration.Role,
+                EmailAddress = registration.EmailAddress,
+                Cellphone = registration.Cellphone
+            };
+
+            user.Employee = employee;
 
             var result = _userManager.Create(user, registration.Password);
 
