@@ -138,7 +138,7 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="data\DroplistDataContext.cs" />
+    <Compile Include="Data\DroplistDataContext.cs" />
     <Compile Include="Migrations\201705041704100_NewInitialMigration.cs" />
     <Compile Include="Migrations\201705041704100_NewInitialMigration.Designer.cs">
       <DependentUpon>201705041704100_NewInitialMigration.cs</DependentUpon>

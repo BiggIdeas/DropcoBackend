@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Droplist.api.Models
 {
-	public class RegistrationModel
+    public class RegistrationModel
 	{
-
 		[Required]
 		public string EmployeeNumber { get; set; }
 

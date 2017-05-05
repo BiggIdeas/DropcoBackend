@@ -5,14 +5,14 @@ namespace Droplist.api.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Droplist.api.data.DroplistDataContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Droplist.api.Data.DroplistDataContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Droplist.api.data.DroplistDataContext context)
+        protected override void Seed(Droplist.api.Data.DroplistDataContext context)
         {
             //  This method will be called after migrating to the latest version.
 

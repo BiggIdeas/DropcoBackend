@@ -1,4 +1,4 @@
-﻿using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
@@ -14,17 +14,17 @@ namespace Droplist.api.Controllers
     {
         private DroplistDataContext db = new DroplistDataContext();
 
-		// GET: api/Departments
-		public IHttpActionResult GetDepartments()
-		{
-			var resultSet = db.Departments.Select(department => new
-			{
-				department.DepartmentId,
-				department.DepartmentName
-			});
+        // GET: api/Departments
+        public IHttpActionResult GetDepartments()
+        {
+            var resultSet = db.Departments.Select(department => new
+            {
+                department.DepartmentId,
+                department.DepartmentName
+            });
 
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // GET: api/Departments/5
         [ResponseType(typeof(Department))]
@@ -36,13 +36,13 @@ namespace Droplist.api.Controllers
                 return NotFound();
             }
 
-			var resultSet = new
-			{
-				department.DepartmentId,
-				department.DepartmentName
-			};
-			return Ok(resultSet);
-		}
+            var resultSet = new
+            {
+                department.DepartmentId,
+                department.DepartmentName
+            };
+            return Ok(resultSet);
+        }
 
         // PUT: api/Departments/5
         [ResponseType(typeof(void))]
@@ -57,11 +57,13 @@ namespace Droplist.api.Controllers
             {
                 return BadRequest();
             }
-			var dbDepartment = db.Departments.Find(id);
-			dbDepartment.DepartmentId = department.DepartmentId;
-			dbDepartment.DepartmentName = department.DepartmentName;
 
-			db.Entry(dbDepartment).State = EntityState.Modified;
+            var dbDepartment = db.Departments.Find(id);
+
+            dbDepartment.DepartmentId = department.DepartmentId;
+            dbDepartment.DepartmentName = department.DepartmentName;
+
+            db.Entry(dbDepartment).State = EntityState.Modified;
 
             try
             {
@@ -96,10 +98,10 @@ namespace Droplist.api.Controllers
 
             return CreatedAtRoute("DefaultApi", new { id = department.DepartmentId }, new
 
-			{
-				department.DepartmentId,
-				department.DepartmentName
-			});
+            {
+                department.DepartmentId,
+                department.DepartmentName
+            });
         }
 
         // DELETE: api/Departments/5

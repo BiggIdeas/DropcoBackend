@@ -1,4 +1,4 @@
-﻿using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
@@ -17,14 +17,14 @@ namespace Droplist.api.Controllers
         // GET: api/Sections
         public IHttpActionResult GetSections()
         {
-			var resultSet = db.Sections.Select(section => new
-			{
-				section.SectionId,
-				section.SectionName,
-				section.DepartmentId
-			});
-			return Ok(resultSet);
-		}
+            var resultSet = db.Sections.Select(section => new
+            {
+                section.SectionId,
+                section.SectionName,
+                section.DepartmentId
+            });
+            return Ok(resultSet);
+        }
 
         // GET: api/Sections/5
         [ResponseType(typeof(Section))]
@@ -36,14 +36,14 @@ namespace Droplist.api.Controllers
                 return NotFound();
             }
 
-			var resultSet = new
-			{
-				section.SectionId,
-				section.SectionName,
-				section.DepartmentId
-			};
+            var resultSet = new
+            {
+                section.SectionId,
+                section.SectionName,
+                section.DepartmentId
+            };
 
-			return Ok(resultSet);
+            return Ok(resultSet);
         }
 
         // PUT: api/Sections/5
@@ -60,11 +60,11 @@ namespace Droplist.api.Controllers
                 return BadRequest();
             }
 
-			var dbSection = db.Sections.Find(id);
+            var dbSection = db.Sections.Find(id);
 
-			dbSection.SectionId = section.SectionId;
-			dbSection.SectionName = section.SectionName;
-			dbSection.DepartmentId = section.DepartmentId;
+            dbSection.SectionId = section.SectionId;
+            dbSection.SectionName = section.SectionName;
+            dbSection.DepartmentId = section.DepartmentId;
 
             db.Entry(dbSection).State = EntityState.Modified;
 
@@ -100,11 +100,11 @@ namespace Droplist.api.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = section.SectionId }, new
-			{
-				section.SectionId,
-				section.SectionName,
-				section.DepartmentId
-			});
+            {
+                section.SectionId,
+                section.SectionName,
+                section.DepartmentId
+            });
         }
 
         // DELETE: api/Sections/5

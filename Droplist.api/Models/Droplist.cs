@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Droplist.api.Models
 {
-	public class Droplist
+    public class Droplist
 	{
 		public Droplist()
 		{
 			DroplistItems = new Collection<DroplistItem>();
 		}
 
-		// scalar properties
+		// Scalar properties
 		public int DroplistId { get; set; }
 		public int BuildingId { get; set; }
 		public int StockerId { get; set; }
@@ -21,8 +20,7 @@ namespace Droplist.api.Models
 		public string DroplistName { get; set; }
 		public DateTime? CreatedOnDate { get; set; }
 
-		// navigation properties
-
+		// Navigation properties
 		public virtual Building Building { get; set; }
 		public virtual Employee Stocker { get; set; }
 		public virtual Employee Driver { get; set; }

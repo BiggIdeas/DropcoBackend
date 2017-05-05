@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Droplist.api.Utility
+﻿namespace Droplist.api.Utility
 {
-	public enum Role
+    public enum Role
 	{
 		Manager,
 		Driver,

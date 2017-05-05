@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security.OAuth;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Droplist.api.Providers
 {
-	public class LocalAuthorizationProvider : OAuthAuthorizationServerProvider
+    public class LocalAuthorizationProvider : OAuthAuthorizationServerProvider
 	{
 		public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
 		{

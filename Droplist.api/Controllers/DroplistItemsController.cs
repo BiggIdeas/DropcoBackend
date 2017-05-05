@@ -1,4 +1,4 @@
-﻿using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
@@ -14,25 +14,25 @@ namespace Droplist.api.Controllers
     {
         private DroplistDataContext db = new DroplistDataContext();
 
-		// GET: api/DroplistItems
-		public IHttpActionResult GetDroplistItems()
-		{
-			var resultSet = db.DroplistItems.Select(droplistItem => new
-			{
-				droplistItem.DroplistItemId,
-				droplistItem.ProductId,
-				droplistItem.DroplistId,
-				droplistItem.AisleNumber,
-				droplistItem.AisleRow,
-				droplistItem.AisleColumn,
-				droplistItem.Completed,
-				droplistItem.Rejected,
-				droplistItem.Quantity
+        // GET: api/DroplistItems
+        public IHttpActionResult GetDroplistItems()
+        {
+            var resultSet = db.DroplistItems.Select(droplistItem => new
+            {
+                droplistItem.DroplistItemId,
+                droplistItem.ProductId,
+                droplistItem.DroplistId,
+                droplistItem.AisleNumber,
+                droplistItem.AisleRow,
+                droplistItem.AisleColumn,
+                droplistItem.Completed,
+                droplistItem.Rejected,
+                droplistItem.Quantity
 
-			});
+            });
 
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // GET: api/DroplistItems/5
         [ResponseType(typeof(DroplistItem))]
@@ -43,24 +43,22 @@ namespace Droplist.api.Controllers
             {
                 return NotFound();
             }
-			var resultSet = new
 
-			{
-				droplistItem.DroplistItemId,
-				droplistItem.ProductId,
-				droplistItem.DroplistId,
-				droplistItem.AisleNumber,
-				droplistItem.AisleRow,
-				droplistItem.AisleColumn,
-				droplistItem.Completed,
-				droplistItem.Rejected,
-				droplistItem.Quantity
+            var resultSet = new
+            {
+                droplistItem.DroplistItemId,
+                droplistItem.ProductId,
+                droplistItem.DroplistId,
+                droplistItem.AisleNumber,
+                droplistItem.AisleRow,
+                droplistItem.AisleColumn,
+                droplistItem.Completed,
+                droplistItem.Rejected,
+                droplistItem.Quantity
+            };
 
-
-			};
-
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // PUT: api/DroplistItems/5
         [ResponseType(typeof(void))]
@@ -75,19 +73,20 @@ namespace Droplist.api.Controllers
             {
                 return BadRequest();
             }
-			var dbDroplistItem = db.DroplistItems.Find(id);
-			dbDroplistItem.DroplistItemId = droplistItem.DroplistItemId;
-			dbDroplistItem.ProductId = droplistItem.ProductId;
-			dbDroplistItem.DroplistId = droplistItem.DroplistId;
-			dbDroplistItem.AisleNumber = droplistItem.AisleNumber;
-			dbDroplistItem.AisleRow = droplistItem.AisleRow;
-			dbDroplistItem.AisleColumn = droplistItem.AisleColumn;
-			dbDroplistItem.Completed = droplistItem.Completed;
-			dbDroplistItem.Rejected = droplistItem.Rejected;
-			dbDroplistItem.Quantity = droplistItem.Quantity;
 
+            var dbDroplistItem = db.DroplistItems.Find(id);
 
-			db.Entry(dbDroplistItem).State = EntityState.Modified;
+            dbDroplistItem.DroplistItemId = droplistItem.DroplistItemId;
+            dbDroplistItem.ProductId = droplistItem.ProductId;
+            dbDroplistItem.DroplistId = droplistItem.DroplistId;
+            dbDroplistItem.AisleNumber = droplistItem.AisleNumber;
+            dbDroplistItem.AisleRow = droplistItem.AisleRow;
+            dbDroplistItem.AisleColumn = droplistItem.AisleColumn;
+            dbDroplistItem.Completed = droplistItem.Completed;
+            dbDroplistItem.Rejected = droplistItem.Rejected;
+            dbDroplistItem.Quantity = droplistItem.Quantity;
+
+            db.Entry(dbDroplistItem).State = EntityState.Modified;
 
             try
             {
@@ -121,19 +120,17 @@ namespace Droplist.api.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = droplistItem.DroplistItemId }, new
-
-			{
-				droplistItem.DroplistItemId,
-				droplistItem.ProductId,
-				droplistItem.DroplistId,
-				droplistItem.AisleNumber,
-				droplistItem.AisleRow,
-				droplistItem.AisleColumn,
-				droplistItem.Completed,
-				droplistItem.Rejected,
-				droplistItem.Quantity
-
-			});
+            {
+                droplistItem.DroplistItemId,
+                droplistItem.ProductId,
+                droplistItem.DroplistId,
+                droplistItem.AisleNumber,
+                droplistItem.AisleRow,
+                droplistItem.AisleColumn,
+                droplistItem.Completed,
+                droplistItem.Rejected,
+                droplistItem.Quantity
+            });
         }
 
         // DELETE: api/DroplistItems/5

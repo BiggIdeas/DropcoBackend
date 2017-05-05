@@ -10,6 +10,7 @@ namespace Droplist.api.Models
 			Droplists = new Collection<Droplist>();
 			Employees = new Collection<Employee>();
 		}
+
 		// Scalar Properties
 		public int BuildingId { get; set; }
 		public int BuildingNumber { get; set; }

@@ -2,7 +2,7 @@
 using Droplist.api.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Droplist.api.data
+namespace Droplist.api.Data
 {
 	public class DroplistDataContext : IdentityDbContext<User>
 	{
@@ -10,6 +10,7 @@ namespace Droplist.api.data
 		{
 
 		}
+
 		public IDbSet<Building> Buildings { get; set; }
 		public IDbSet<Department> Departments { get; set; }
 		public IDbSet<Models.Droplist> Droplists { get; set; }
@@ -20,9 +21,6 @@ namespace Droplist.api.data
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-
-			// building has many drop lists, drivers?, stockers?
-
 			modelBuilder.Entity<Building>()
 				.HasMany(Building => Building.Droplists)
 				.WithRequired(droplist => droplist.Building)

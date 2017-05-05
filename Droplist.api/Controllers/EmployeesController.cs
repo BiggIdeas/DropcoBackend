@@ -1,4 +1,4 @@
-﻿using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
@@ -26,8 +26,7 @@ namespace Droplist.api.Controllers
                 employee.EmailAddress,
                 employee.Cellphone,
                 employee.EmployeeNumber,
-                employee.Role,
-
+                employee.Role
             });
 
             return Ok(resultSet);
@@ -43,7 +42,6 @@ namespace Droplist.api.Controllers
                 return NotFound();
             }
             var resultSet = new
-
             {
                 employee.EmployeeId,
                 employee.BuildingId,
@@ -71,6 +69,7 @@ namespace Droplist.api.Controllers
             {
                 return BadRequest();
             }
+
             var dbEmployee = db.Employees.Find(id);
 
             dbEmployee.EmployeeId = employee.EmployeeId;
@@ -116,7 +115,6 @@ namespace Droplist.api.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = employee.EmployeeId }, new
-
             {
                 employee.EmployeeId,
                 employee.BuildingId,
@@ -126,7 +124,6 @@ namespace Droplist.api.Controllers
                 employee.Cellphone,
                 employee.EmployeeNumber,
                 employee.Role
-
             });
         }
 

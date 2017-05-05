@@ -1,4 +1,4 @@
-﻿using Droplist.api.data;
+﻿using Droplist.api.Data;
 using Droplist.api.Models;
 using System.Data;
 using System.Data.Entity;
@@ -14,24 +14,23 @@ namespace Droplist.api.Controllers
     {
         private DroplistDataContext db = new DroplistDataContext();
 
-		// GET: api/Buildings
-		public IHttpActionResult GetBuildings()
-		{
-			var resultSet = db.Buildings.Select(building => new
+        // GET: api/Buildings
+        public IHttpActionResult GetBuildings()
+        {
+            var resultSet = db.Buildings.Select(building => new
+            {
+                building.BuildingId,
+                building.BuildingName,
+                building.BuildingNumber,
+                building.Telephone,
+                building.StreetAddress,
+                building.City,
+                building.State,
+                building.Zip
+            });
 
-			{
-				building.BuildingId,
-				building.BuildingName,
-				building.BuildingNumber,
-				building.Telephone,
-				building.StreetAddress,
-				building.City,
-				building.State,
-				building.Zip
-			});
-
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // GET: api/Buildings/5
         [ResponseType(typeof(Building))]
@@ -42,21 +41,20 @@ namespace Droplist.api.Controllers
             {
                 return NotFound();
             }
-			var resultSet = new
+            var resultSet = new
+            {
+                building.BuildingId,
+                building.BuildingName,
+                building.BuildingNumber,
+                building.Telephone,
+                building.StreetAddress,
+                building.City,
+                building.State,
+                building.Zip
+            };
 
-			{
-				building.BuildingId,
-				building.BuildingName,
-				building.BuildingNumber,
-				building.Telephone,
-				building.StreetAddress,
-				building.City,
-				building.State,
-				building.Zip
-			};
-
-			return Ok(resultSet);
-		}
+            return Ok(resultSet);
+        }
 
         // PUT: api/Buildings/5
         [ResponseType(typeof(void))]
@@ -72,20 +70,20 @@ namespace Droplist.api.Controllers
                 return BadRequest();
             }
 
-			var dbBuilding = db.Buildings.Find(id);
+            var dbBuilding = db.Buildings.Find(id);
 
-			dbBuilding.BuildingId = building.BuildingId;
-			dbBuilding.BuildingName = building.BuildingName;
-			dbBuilding.BuildingNumber = building.BuildingNumber;
-			dbBuilding.Telephone = building.Telephone;
-			dbBuilding.StreetAddress = building.StreetAddress;
-			dbBuilding.City = building.City;
-			dbBuilding.State = building.State;
-			dbBuilding.Zip = building.Zip;
+            dbBuilding.BuildingId = building.BuildingId;
+            dbBuilding.BuildingName = building.BuildingName;
+            dbBuilding.BuildingNumber = building.BuildingNumber;
+            dbBuilding.Telephone = building.Telephone;
+            dbBuilding.StreetAddress = building.StreetAddress;
+            dbBuilding.City = building.City;
+            dbBuilding.State = building.State;
+            dbBuilding.Zip = building.Zip;
 
 
-			db.Entry(dbBuilding).State = EntityState.Modified;
-			try
+            db.Entry(dbBuilding).State = EntityState.Modified;
+            try
             {
                 db.SaveChanges();
             }
@@ -116,17 +114,17 @@ namespace Droplist.api.Controllers
             db.Buildings.Add(building);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = building.BuildingId }, new {
-
-				building.BuildingId,
-				building.BuildingName,
-				building.BuildingNumber,
-				building.Telephone,
-				building.StreetAddress,
-				building.City,
-				building.State,
-				building.Zip
-			});
+            return CreatedAtRoute("DefaultApi", new { id = building.BuildingId }, new
+            {
+                building.BuildingId,
+                building.BuildingName,
+                building.BuildingNumber,
+                building.Telephone,
+                building.StreetAddress,
+                building.City,
+                building.State,
+                building.Zip
+            });
         }
 
         // DELETE: api/Buildings/5
