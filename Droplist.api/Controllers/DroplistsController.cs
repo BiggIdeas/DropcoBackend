@@ -214,9 +214,9 @@ namespace Droplist.api.Controllers
             db.Droplists.Add(dbDroplist);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = droplist.DroplistId }, new
+            return CreatedAtRoute("DefaultApi", new { id = dbDroplist.DroplistId }, new
             {
-                droplist.DroplistId,
+				dbDroplist.DroplistId,
                 droplist.BuildingId,
                 droplist.DroplistName,
                 droplist.CreatedOnDate,
