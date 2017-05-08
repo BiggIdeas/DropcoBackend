@@ -93,6 +93,7 @@ namespace Droplist.api.Controllers
 
         // POST: api/Products
         [ResponseType(typeof(Product))]
+        [Authorize(Roles = "Manager")]       
         public IHttpActionResult PostProduct(Product product)
         {
             if (!ModelState.IsValid)

@@ -58,6 +58,9 @@ namespace Droplist.api.Controllers
             }
         }
 
+        // GET: api/me
+    
+
         protected override void Dispose(bool disposing)
         {
             _userManager.Dispose();

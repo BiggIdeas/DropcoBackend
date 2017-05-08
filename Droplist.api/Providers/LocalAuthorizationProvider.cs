@@ -2,7 +2,9 @@
 using Droplist.api.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -26,18 +28,42 @@ namespace Droplist.api.Providers
 					context.SetError("invalid_grant", "Incorrect username or password");
 					return;
 				}
-			}
 
-			var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-			identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-			identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
+                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+                identity.AddClaim(new Claim(ClaimTypes.Role, user.Employee.Role));
 
-			context.Validated(identity);
+                var extraData = new AuthenticationProperties(new Dictionary<string, string>
+                {
+                    {
+                        "username", user.UserName
+                    },
+                    {
+                        "role", user.Employee.Role
+                    }
+                });
+
+                var token = new AuthenticationTicket(identity, extraData);
+
+                context.Validated(token);
+            }
+
+			
 		}
 
 		public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
 		{
 			context.Validated();
 		}
-	}
+
+        public override Task TokenEndpoint(OAuthTokenEndpointContext context)
+        {
+            foreach (var extraProperty in context.Properties.Dictionary)
+            {
+                context.AdditionalResponseParameters.Add(extraProperty.Key, extraProperty.Value);
+            }
+
+            return Task.FromResult<object>(null);
+        }
+    }
 }
