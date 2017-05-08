@@ -235,6 +235,11 @@ namespace Droplist.api.Controllers
             {
                 return NotFound();
             }
+			var droplistItems = db.DroplistItems.Where(x => x.DroplistId == id).ToList();
+			for (int i = 0; i < droplistItems.Count; i++)
+			{
+				db.DroplistItems.Remove(droplistItems[i]);
+			}
 
             db.Droplists.Remove(droplist);
             db.SaveChanges();
