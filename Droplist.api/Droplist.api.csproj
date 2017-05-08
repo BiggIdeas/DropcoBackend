@@ -159,6 +159,10 @@
     <Compile Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.Designer.cs">
       <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.cs" />
+    <Compile Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.Designer.cs">
+      <DependentUpon>201705081807058_RemovedBuildingIdfromProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
     <Compile Include="Models\Department.cs" />
@@ -201,6 +205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.resx">
       <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.resx">
+      <DependentUpon>201705081807058_RemovedBuildingIdfromProductTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

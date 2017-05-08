@@ -21,7 +21,6 @@ namespace Droplist.api.Controllers
 			{
 				product.ProductId,
 				product.ItemNumber,
-				product.BuildingId,
 				product.Description
 			});
 
@@ -42,7 +41,6 @@ namespace Droplist.api.Controllers
 			{
 				product.ProductId,
 				product.ItemNumber,
-				product.BuildingId,
 				product.Description
 			};
 
@@ -65,7 +63,6 @@ namespace Droplist.api.Controllers
 
 			var dbProduct = db.Products.Find(id);
 
-			dbProduct.BuildingId = product.BuildingId;
 			dbProduct.ProductId = product.ProductId;
 			dbProduct.ItemNumber = product.ItemNumber;
 			dbProduct.Description = product.Description;
@@ -108,7 +105,6 @@ namespace Droplist.api.Controllers
 			{
 				product.ProductId,
 				product.ItemNumber,
-				product.BuildingId,
 				product.Description
 			});
         }

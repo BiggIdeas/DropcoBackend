@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Droplist.api.Models;
 
 namespace Droplist.api.Controllers
 {
@@ -44,23 +45,27 @@ namespace Droplist.api.Controllers
                 return NotFound();
             }
 
-            var droplistItems = db.DroplistItems
-                .Where(d => d.DroplistId == id)
-                .Select(d => new
-                {
-                    itemNumber = d.Product.ItemNumber,
-                    description = d.Product.Description,
-                    aisleNumber = d.AisleNumber,
-                    aisleRow = d.AisleRow,
-                    aisleColumn = d.AisleColumn,
-                    completed = d.Completed,
-                    rejected = d.Rejected,
-                    quantity = d.Quantity
-                })
-                .OrderBy(d => d.aisleNumber)
-                .ThenBy(d => d.aisleColumn)
-                .ThenBy(d => d.aisleRow)
-                .ThenBy(d => d.itemNumber);
+			var droplistItems = db.DroplistItems
+				.Where(d => d.DroplistId == id)
+				.Select(d => new
+				{
+					product = new
+					{
+						itemNumber = d.Product.ItemNumber,
+						description = d.Product.Description
+					},
+
+					aisleNumber = d.AisleNumber,
+					aisleRow = d.AisleRow,
+					aisleColumn = d.AisleColumn,
+					completed = d.Completed,
+					rejected = d.Rejected,
+					quantity = d.Quantity
+				})
+				.OrderBy(d => d.aisleNumber)
+				.ThenBy(d => d.aisleColumn)
+				.ThenBy(d => d.aisleRow);
+                
 
             var resultSet = new
             {
@@ -160,20 +165,50 @@ namespace Droplist.api.Controllers
 
             foreach (var di in droplist.DroplistItems)
             {
-                var dbdi = new Models.DroplistItem
-                {
-                    AisleColumn = di.AisleColumn,
-                    AisleNumber = di.AisleNumber,
-                    AisleRow = di.AisleRow,
-                    Completed = di.Completed,
-                    DroplistId = di.DroplistId,
-                    DroplistItemId = di.DroplistItemId,
-                    ProductId = di.ProductId,
-                    Quantity = di.Quantity,
-                    Rejected = di.Rejected
-                };
+				if (di.ProductId != 0)
+				{
+					var dbdi = new Models.DroplistItem
+					{
+						AisleColumn = di.AisleColumn,
+						AisleNumber = di.AisleNumber,
+						AisleRow = di.AisleRow,
+						Completed = di.Completed,
+						DroplistId = di.DroplistId,
+						DroplistItemId = di.DroplistItemId,
+						ProductId = di.ProductId,
+						Quantity = di.Quantity,
+						Rejected = di.Rejected
+					};
 
-                dbDroplist.DroplistItems.Add(dbdi);
+					dbDroplist.DroplistItems.Add(dbdi);
+				}
+				else
+				{
+					var product = new Product {
+						ItemNumber = di.Product.ItemNumber,
+						Description = di.Product.Description,
+						Price = 0
+					
+					};
+
+					db.Products.Add(product);
+					db.SaveChanges();
+
+					var dbdi = new Models.DroplistItem
+					{
+						AisleColumn = di.AisleColumn,
+						AisleNumber = di.AisleNumber,
+						AisleRow = di.AisleRow,
+						Completed = di.Completed,
+						DroplistId = di.DroplistId,
+						DroplistItemId = di.DroplistItemId,
+						ProductId = product.ProductId,
+						Quantity = di.Quantity,
+						Rejected = di.Rejected
+					};
+
+					dbDroplist.DroplistItems.Add(dbdi);
+				}      
             }
 
             db.Droplists.Add(dbDroplist);
