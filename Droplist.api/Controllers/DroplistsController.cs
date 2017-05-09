@@ -51,17 +51,20 @@ namespace Droplist.api.Controllers
 				{
 					product = new
 					{
+						productId = d.Product.ProductId,
 						itemNumber = d.Product.ItemNumber,
 						description = d.Product.Description
 					},
-
+					droplistId = d.DroplistId,
 					aisleNumber = d.AisleNumber,
 					aisleRow = d.AisleRow,
 					aisleColumn = d.AisleColumn,
 					completed = d.Completed,
 					rejected = d.Rejected,
-					quantity = d.Quantity
+					quantity = d.Quantity,
+					droplistItemId = d.DroplistItemId
 				})
+
 				.OrderBy(d => d.aisleNumber)
 				.ThenBy(d => d.aisleColumn)
 				.ThenBy(d => d.aisleRow);
@@ -134,7 +137,21 @@ namespace Droplist.api.Controllers
                 }
                 else
                 {
-                    db.Entry(droplistItem).State = EntityState.Modified;
+					var dbDroplistItem = db.DroplistItems.Find(droplistItem.DroplistItemId);
+
+					// save the properties you want to set
+					// aisle
+					dbDroplistItem.AisleNumber = droplistItem.AisleNumber;
+					// row
+					dbDroplistItem.AisleRow = droplistItem.AisleRow;
+					// column
+					dbDroplistItem.AisleColumn = droplistItem.AisleColumn;
+					// productid 
+					dbDroplistItem.ProductId = droplistItem.Product.ProductId;
+					// quantity
+					dbDroplistItem.Quantity = droplistItem.Quantity;
+
+					db.Entry(dbDroplistItem).State = EntityState.Modified;
                 }
 
                 db.SaveChanges();
