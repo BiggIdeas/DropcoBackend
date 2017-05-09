@@ -21,7 +21,8 @@ namespace Droplist.api.Controllers
             {
                 section.SectionId,
                 section.SectionName,
-                section.DepartmentId
+                section.DepartmentId,
+				section.Department.DepartmentName
             });
             return Ok(resultSet);
         }
