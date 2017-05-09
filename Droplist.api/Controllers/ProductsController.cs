@@ -27,7 +27,7 @@ namespace Droplist.api.Controllers
 			return Ok(resultSet);
 		}
 
-        // GET: api/Products/5
+        // GET: api/Products/5--
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
         {
