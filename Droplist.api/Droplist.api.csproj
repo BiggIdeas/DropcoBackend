@@ -139,29 +139,9 @@
     <Compile Include="Controllers\SectionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\DroplistDataContext.cs" />
-    <Compile Include="Migrations\201705041704100_NewInitialMigration.cs" />
-    <Compile Include="Migrations\201705041704100_NewInitialMigration.Designer.cs">
-      <DependentUpon>201705041704100_NewInitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705041851105_UpdatedDroplistItems.cs" />
-    <Compile Include="Migrations\201705041851105_UpdatedDroplistItems.Designer.cs">
-      <DependentUpon>201705041851105_UpdatedDroplistItems.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.cs" />
-    <Compile Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.Designer.cs">
-      <DependentUpon>201705041855161_UpdatedDroplistItemAisleNUmber.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705042102290_AddedRoleController.cs" />
-    <Compile Include="Migrations\201705042102290_AddedRoleController.Designer.cs">
-      <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.cs" />
-    <Compile Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.Designer.cs">
-      <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.cs" />
-    <Compile Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.Designer.cs">
-      <DependentUpon>201705081807058_RemovedBuildingIdfromProductTable.cs</DependentUpon>
+    <Compile Include="Migrations\201705102119181_NewMigration.cs" />
+    <Compile Include="Migrations\201705102119181_NewMigration.Designer.cs">
+      <DependentUpon>201705102119181_NewMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
@@ -191,23 +171,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705041704100_NewInitialMigration.resx">
-      <DependentUpon>201705041704100_NewInitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705041851105_UpdatedDroplistItems.resx">
-      <DependentUpon>201705041851105_UpdatedDroplistItems.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705041855161_UpdatedDroplistItemAisleNUmber.resx">
-      <DependentUpon>201705041855161_UpdatedDroplistItemAisleNUmber.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705042102290_AddedRoleController.resx">
-      <DependentUpon>201705042102290_AddedRoleController.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705042306048_MakeDroplistDriverRelationshipOptional.resx">
-      <DependentUpon>201705042306048_MakeDroplistDriverRelationshipOptional.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705081807058_RemovedBuildingIdfromProductTable.resx">
-      <DependentUpon>201705081807058_RemovedBuildingIdfromProductTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705102119181_NewMigration.resx">
+      <DependentUpon>201705102119181_NewMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

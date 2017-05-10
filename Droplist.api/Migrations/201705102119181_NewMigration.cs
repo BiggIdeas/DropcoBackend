@@ -3,7 +3,7 @@ namespace Droplist.api.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewInitialMigration : DbMigration
+    public partial class NewMigration : DbMigration
     {
         public override void Up()
         {
@@ -29,14 +29,14 @@ namespace Droplist.api.Migrations
                         DroplistId = c.Int(nullable: false, identity: true),
                         BuildingId = c.Int(nullable: false),
                         StockerId = c.Int(nullable: false),
-                        DriverId = c.Int(nullable: false),
+                        DriverId = c.Int(),
                         SectionId = c.Int(nullable: false),
                         DroplistName = c.String(),
                         CreatedOnDate = c.DateTime(),
                         Stocker_EmployeeId = c.Int(),
                     })
                 .PrimaryKey(t => t.DroplistId)
-                .ForeignKey("dbo.Employees", t => t.DriverId, cascadeDelete: true)
+                .ForeignKey("dbo.Employees", t => t.DriverId)
                 .ForeignKey("dbo.Sections", t => t.SectionId, cascadeDelete: true)
                 .ForeignKey("dbo.Employees", t => t.Stocker_EmployeeId)
                 .ForeignKey("dbo.Buildings", t => t.BuildingId)
@@ -55,7 +55,6 @@ namespace Droplist.api.Migrations
                         LastName = c.String(),
                         EmailAddress = c.String(),
                         Cellphone = c.String(),
-                        Address = c.String(),
                         EmployeeNumber = c.Int(nullable: false),
                         Role = c.String(),
                     })
@@ -131,11 +130,12 @@ namespace Droplist.api.Migrations
                         DroplistItemId = c.Int(nullable: false, identity: true),
                         ProductId = c.Int(nullable: false),
                         DroplistId = c.Int(nullable: false),
-                        AisleNumber = c.String(),
+                        AisleNumber = c.Int(nullable: false),
                         AisleRow = c.String(),
                         AisleColumn = c.Int(nullable: false),
                         Completed = c.DateTime(),
                         Rejected = c.DateTime(),
+                        Quantity = c.Int(),
                     })
                 .PrimaryKey(t => t.DroplistItemId)
                 .ForeignKey("dbo.Products", t => t.ProductId, cascadeDelete: true)
@@ -149,7 +149,6 @@ namespace Droplist.api.Migrations
                     {
                         ProductId = c.Int(nullable: false, identity: true),
                         ItemNumber = c.Int(nullable: false),
-                        BuildingId = c.Int(nullable: false),
                         Description = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })

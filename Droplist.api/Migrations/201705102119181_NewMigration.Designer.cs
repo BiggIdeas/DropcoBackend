@@ -7,13 +7,13 @@ namespace Droplist.api.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class NewInitialMigration : IMigrationMetadata
+    public sealed partial class NewMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NewInitialMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705041704100_NewInitialMigration"; }
+            get { return "201705102119181_NewMigration"; }
         }
         
         string IMigrationMetadata.Source
