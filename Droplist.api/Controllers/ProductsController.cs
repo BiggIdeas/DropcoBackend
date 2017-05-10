@@ -21,7 +21,8 @@ namespace Droplist.api.Controllers
 			{
 				product.ProductId,
 				product.ItemNumber,
-				product.Description
+				product.Description,
+                product.Price
 			});
 
 			return Ok(resultSet);
