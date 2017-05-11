@@ -79,8 +79,8 @@ namespace Droplist.api.Controllers
                 droplist.StockerId,
                 droplist.DriverId,
                 droplist.SectionId,
-                DriverName = droplist.Driver.FirstName + " " + droplist.Driver.LastName,
-                StockerName = droplist.Stocker.FirstName + " " + droplist.Stocker.LastName,
+                DriverName = (droplist.Driver!= null) ? droplist.Driver.FirstName + " " + droplist.Driver.LastName : null,
+                //StockerName = droplist.Stocker.FirstName + " " + droplist.Stocker.LastName,
                 DepartmentName = droplist.Section.Department.DepartmentName,
                 SectionName = droplist.Section.SectionName,
                 DroplistItems = droplistItems
