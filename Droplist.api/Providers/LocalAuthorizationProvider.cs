@@ -32,10 +32,8 @@ namespace Droplist.api.Providers
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
                 identity.AddClaim(new Claim(ClaimTypes.Role, user.Employee.Role));
-				identity.AddClaim(new Claim(ClaimTypes.Name, user.Employee.EmployeeId.ToString()));
 
-
-				var extraData = new AuthenticationProperties(new Dictionary<string, string>
+                var extraData = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     {
                         "username", user.UserName
@@ -45,7 +43,10 @@ namespace Droplist.api.Providers
                     },
 					{
 						"userId", user.Employee.EmployeeId.ToString()
-					}
+					},
+                    {
+                        "buildingId", user.Employee.BuildingId.ToString()
+                    }
                 });
 
                 var token = new AuthenticationTicket(identity, extraData);

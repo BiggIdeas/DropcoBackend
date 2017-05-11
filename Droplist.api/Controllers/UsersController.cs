@@ -1,12 +1,13 @@
 ﻿using Droplist.api.Data;
 using Droplist.api.Models;
+using Droplist.api.Utility;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web.Http;
 
 namespace Droplist.api.Controllers
 {
-    public class UsersController : ApiController
+    public class UsersController : BaseApiController
     {
         private UserManager<User> _userManager;
 

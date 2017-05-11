@@ -156,6 +156,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\LocalAuthorizationProvider.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utility\BaseApiController.cs" />
     <Compile Include="Utility\Role.cs" />
   </ItemGroup>
   <ItemGroup>
