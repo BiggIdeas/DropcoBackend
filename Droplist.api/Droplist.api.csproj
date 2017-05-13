@@ -131,6 +131,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BuildingsController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
+    <Compile Include="Controllers\DroplistItemController.cs" />
     <Compile Include="Controllers\DroplistItemsController.cs" />
     <Compile Include="Controllers\DroplistsController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -142,6 +143,10 @@
     <Compile Include="Migrations\201705102119181_NewMigration.cs" />
     <Compile Include="Migrations\201705102119181_NewMigration.Designer.cs">
       <DependentUpon>201705102119181_NewMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705130339305_AddedCompletedOnDateOnDroplistModel.cs" />
+    <Compile Include="Migrations\201705130339305_AddedCompletedOnDateOnDroplistModel.Designer.cs">
+      <DependentUpon>201705130339305_AddedCompletedOnDateOnDroplistModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Building.cs" />
@@ -174,6 +179,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705102119181_NewMigration.resx">
       <DependentUpon>201705102119181_NewMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705130339305_AddedCompletedOnDateOnDroplistModel.resx">
+      <DependentUpon>201705130339305_AddedCompletedOnDateOnDroplistModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,9 +19,10 @@ namespace Droplist.api.Models
 		public int SectionId { get; set; }
 		public string DroplistName { get; set; }
 		public DateTime? CreatedOnDate { get; set; }
+        public DateTime? CompletedOnDate { get; set; }
 
-		// Navigation properties
-		public virtual Building Building { get; set; }
+        // Navigation properties
+        public virtual Building Building { get; set; }
 		public virtual Employee Stocker { get; set; }
 		public virtual Employee Driver { get; set; }
 		public virtual Section Section { get; set; }

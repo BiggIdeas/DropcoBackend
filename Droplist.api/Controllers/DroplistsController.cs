@@ -1,5 +1,4 @@
-﻿using Droplist.api.Data;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -13,23 +12,23 @@ namespace Droplist.api.Controllers
 {
     public class DroplistsController : BaseApiController
     {
-        //private DroplistDataContext db = new DroplistDataContext();
-
         // GET: api/Droplists
         public IHttpActionResult GetDroplists()
         {
-            if (CurrentUser == null) {
+            if (CurrentUser == null)
+            {
                 return Unauthorized();
             }
 
             var resultSet = db.Droplists
-                .Where(d=> d.BuildingId == CurrentUser.Employee.BuildingId) //Match userId of logged user
+                .Where(d => d.BuildingId == CurrentUser.Employee.BuildingId) //Match userId of logged user
                 .Select(droplist => new
                 {
                     droplist.DroplistId,
                     droplist.BuildingId,
                     droplist.DroplistName,
                     droplist.CreatedOnDate,
+                    droplist.CompletedOnDate,
                     droplist.StockerId,
                     droplist.DriverId,
                     droplist.SectionId,
@@ -76,7 +75,6 @@ namespace Droplist.api.Controllers
                     quantity = d.Quantity,
                     droplistItemId = d.DroplistItemId
                 })
-
                 .OrderBy(d => d.aisleNumber)
                 .ThenBy(d => d.aisleColumn)
                 .ThenBy(d => d.aisleRow);
@@ -88,6 +86,7 @@ namespace Droplist.api.Controllers
                 droplist.BuildingId,
                 droplist.DroplistName,
                 droplist.CreatedOnDate,
+                droplist.CompletedOnDate,
                 droplist.StockerId,
                 droplist.DriverId,
                 droplist.SectionId,
@@ -126,7 +125,9 @@ namespace Droplist.api.Controllers
             dbDroplist.DriverId = droplist.DriverId;
             dbDroplist.DroplistName = droplist.DroplistName;
             dbDroplist.SectionId = droplist.SectionId;
+            dbDroplist.CompletedOnDate = droplist.CompletedOnDate;
             dbDroplist.CreatedOnDate = droplist.CreatedOnDate;
+            dbDroplist.CompletedOnDate = droplist.CompletedOnDate;
 
             db.Entry(dbDroplist).State = EntityState.Modified;
 
@@ -195,6 +196,7 @@ namespace Droplist.api.Controllers
             {
                 BuildingId = droplist.BuildingId,
                 CreatedOnDate = droplist.CreatedOnDate,
+                CompletedOnDate = droplist.CompletedOnDate,
                 DriverId = droplist.DriverId,
                 DroplistId = droplist.DroplistId,
                 DroplistName = droplist.DroplistName,
@@ -206,7 +208,7 @@ namespace Droplist.api.Controllers
             {
                 if (di.ProductId != 0)
                 {
-                    var dbdi = new Models.DroplistItem
+                    var dbdi = new DroplistItem
                     {
                         AisleColumn = di.AisleColumn,
                         AisleNumber = di.AisleNumber,
@@ -234,7 +236,7 @@ namespace Droplist.api.Controllers
                     db.Products.Add(product);
                     db.SaveChanges();
 
-                    var dbdi = new Models.DroplistItem
+                    var dbdi = new DroplistItem
                     {
                         AisleColumn = di.AisleColumn,
                         AisleNumber = di.AisleNumber,
@@ -260,6 +262,7 @@ namespace Droplist.api.Controllers
                 droplist.BuildingId,
                 droplist.DroplistName,
                 droplist.CreatedOnDate,
+                droplist.CompletedOnDate,
                 droplist.StockerId,
                 droplist.DriverId,
                 droplist.SectionId,
