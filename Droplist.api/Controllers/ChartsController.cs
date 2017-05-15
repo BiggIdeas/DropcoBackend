@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace Droplist.api.Controllers
 {
@@ -37,19 +38,73 @@ namespace Droplist.api.Controllers
         [Route("api/getDroplistItems")]
         public IHttpActionResult GetDroplistItems()
         {
-            var today = DateTime.Now;
             var droplistItems = db.DroplistItems;
 
             var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
-            var rejectedDroplistItems = droplistItems.Where(x => x.Rejected != null);
             var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
-            //Count() - completedDroplistItems.Count - rejectedDroplistItems.Count;
+            var rejectedDroplistItems = droplistItems.Where(x => x.Rejected != null);
 
-            //new int[] { 99, 98, 92, 97, 95 }
             var resultSet = new
             {
                 data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
-                labels = new string[] { "Completed", "Rejected", "Pending" }
+                labels = new string[] { "Completed", "Pending", "Rejected" }
+            };
+            return Ok(resultSet);
+        }
+
+        //GET: api/DroplistItems
+        [Route("api/getHardlinesDroplistItems")]
+        //[ResponseType(typeof)]
+        //[FromUri] string departmentName
+        public IHttpActionResult GetHardlinesDroplistItems()
+        {
+            var departmentId = db.Departments.First(x=> x.DepartmentName == "Hardlines").DepartmentId;
+            var droplistItems = db.DroplistItems.Where(x=> x.Droplist.Section.DepartmentId == departmentId);
+
+            var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
+            var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
+            var rejectedDroplistItems = droplistItems.Where(x => x.Rejected != null);
+
+            var resultSet = new
+            {
+                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                labels = new string[] { "Completed", "Pending", "Rejected" }
+            };
+            return Ok(resultSet);
+        }
+
+        [Route("api/getCenterDroplistItems")]
+        public IHttpActionResult GetCenterDroplistItems()
+        {
+            var departmentId = db.Departments.First(x => x.DepartmentName == "Center").DepartmentId;
+            var droplistItems = db.DroplistItems.Where(x => x.Droplist.Section.DepartmentId == departmentId);
+
+            var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
+            var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
+            var rejectedDroplistItems = droplistItems.Where(x => x.Rejected != null);
+
+            var resultSet = new
+            {
+                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                labels = new string[] { "Completed", "Pending", "Rejected" }
+            };
+            return Ok(resultSet);
+        }
+
+        [Route("api/getFoodsDroplistItems")]
+        public IHttpActionResult GetFoodsDroplistItems()
+        {
+            var departmentId = db.Departments.First(x => x.DepartmentName == "Foods").DepartmentId;
+            var droplistItems = db.DroplistItems.Where(x => x.Droplist.Section.DepartmentId == departmentId);
+
+            var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
+            var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
+            var rejectedDroplistItems = droplistItems.Where(x => x.Rejected != null);
+
+            var resultSet = new
+            {
+                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                labels = new string[] { "Completed", "Pending", "Rejected" }
             };
             return Ok(resultSet);
         }
