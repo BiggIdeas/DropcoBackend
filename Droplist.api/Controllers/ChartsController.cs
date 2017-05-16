@@ -46,7 +46,7 @@ namespace Droplist.api.Controllers
 
             var resultSet = new
             {
-                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                data = new int[] { completedDroplistItems.Count(), pendingDroplistItems.Count(), rejectedDroplistItems.Count() },
                 labels = new string[] { "Completed", "Pending", "Rejected" }
             };
             return Ok(resultSet);
@@ -67,7 +67,7 @@ namespace Droplist.api.Controllers
 
             var resultSet = new
             {
-                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                data = new int[] { completedDroplistItems.Count(), pendingDroplistItems.Count(), rejectedDroplistItems.Count() },
                 labels = new string[] { "Completed", "Pending", "Rejected" }
             };
             return Ok(resultSet);
@@ -85,7 +85,7 @@ namespace Droplist.api.Controllers
 
             var resultSet = new
             {
-                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                data = new int[] { completedDroplistItems.Count(), pendingDroplistItems.Count(), rejectedDroplistItems.Count() },
                 labels = new string[] { "Completed", "Pending", "Rejected" }
             };
             return Ok(resultSet);
@@ -103,7 +103,7 @@ namespace Droplist.api.Controllers
 
             var resultSet = new
             {
-                data = new int[] { completedDroplistItems.Count(), rejectedDroplistItems.Count(), pendingDroplistItems.Count() },
+                data = new int[] { completedDroplistItems.Count(), pendingDroplistItems.Count(), rejectedDroplistItems.Count() },
                 labels = new string[] { "Completed", "Pending", "Rejected" }
             };
             return Ok(resultSet);
