@@ -61,7 +61,9 @@ namespace Droplist.api.Controllers
         public IHttpActionResult GetHardlinesDroplistItems()
         {
             var departmentId = db.Departments.First(x=> x.DepartmentName == "Hardlines").DepartmentId;
-            var droplistItems = db.DroplistItems.Where(x=> x.Droplist.Section.DepartmentId == departmentId);
+            var droplistItems = db.DroplistItems
+                .Where(x=> x.Droplist.BuildingId == CurrentUser.Employee.BuildingId)
+                .Where(x=> x.Droplist.Section.DepartmentId == departmentId);
 
             var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
             var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
@@ -79,7 +81,9 @@ namespace Droplist.api.Controllers
         public IHttpActionResult GetCenterDroplistItems()
         {
             var departmentId = db.Departments.First(x => x.DepartmentName == "Center").DepartmentId;
-            var droplistItems = db.DroplistItems.Where(x => x.Droplist.Section.DepartmentId == departmentId);
+            var droplistItems = db.DroplistItems
+                .Where(x=> x.Droplist.BuildingId == CurrentUser.Employee.BuildingId)
+                .Where(x => x.Droplist.Section.DepartmentId == departmentId);
 
             var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
             var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
@@ -97,7 +101,9 @@ namespace Droplist.api.Controllers
         public IHttpActionResult GetFoodsDroplistItems()
         {
             var departmentId = db.Departments.First(x => x.DepartmentName == "Foods").DepartmentId;
-            var droplistItems = db.DroplistItems.Where(x => x.Droplist.Section.DepartmentId == departmentId);
+            var droplistItems = db.DroplistItems
+                .Where(x=> x.Droplist.BuildingId == CurrentUser.Employee.BuildingId)
+                .Where(x => x.Droplist.Section.DepartmentId == departmentId);
 
             var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
             var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
