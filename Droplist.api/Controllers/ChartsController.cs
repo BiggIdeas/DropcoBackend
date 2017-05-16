@@ -1,4 +1,5 @@
 ﻿using Droplist.api.Data;
+using Droplist.api.Utility;
 using System;
 using System.Linq;
 using System.Web.Http;
@@ -6,7 +7,7 @@ using System.Web.Http.Description;
 
 namespace Droplist.api.Controllers
 {
-    public class ChartsController : ApiController
+    public class ChartsController : BaseApiController
     {
         private DroplistDataContext db = new DroplistDataContext();
 
@@ -38,7 +39,8 @@ namespace Droplist.api.Controllers
         [Route("api/getDroplistItems")]
         public IHttpActionResult GetDroplistItems()
         {
-            var droplistItems = db.DroplistItems;
+            var droplistItems = db.DroplistItems
+                .Where(x=> x.Droplist.BuildingId == CurrentUser.Employee.BuildingId);
 
             var completedDroplistItems = droplistItems.Where(x => x.Completed != null);
             var pendingDroplistItems = droplistItems.Where(x => x.Completed == null && x.Rejected == null);
