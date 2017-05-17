@@ -128,7 +128,7 @@ namespace Droplist.api.Controllers
                 .Where(x=> x.Rejected != null);
 
             var resultSet = new {
-                droplistItems
+                droplistItems = droplistItems
             };
 
             return Ok(resultSet);
