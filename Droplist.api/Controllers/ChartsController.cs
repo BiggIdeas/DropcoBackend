@@ -35,6 +35,8 @@ namespace Droplist.api.Controllers
             return Ok(resultSet);
         }
 
+
+        //Manager
         //GET: api/DroplistItems
         [Route("api/getDroplistItems")]
         public IHttpActionResult GetDroplistItems()
@@ -114,6 +116,21 @@ namespace Droplist.api.Controllers
                 data = new int[] { completedDroplistItems.Count(), pendingDroplistItems.Count(), rejectedDroplistItems.Count() },
                 labels = new string[] { "Completed", "Pending", "Rejected" }
             };
+            return Ok(resultSet);
+        }
+
+
+        //Stocker
+        [Route("api/getRejectedDroplistItems")]
+        public IHttpActionResult GetRejectedDroplistItems() {
+            var droplistItems = db.DroplistItems
+                .Where(x=> x.Droplist.StockerId == CurrentUser.Employee.EmployeeId)
+                .Where(x=> x.Rejected != null);
+
+            var resultSet = new {
+                droplistItems
+            };
+
             return Ok(resultSet);
         }
 
